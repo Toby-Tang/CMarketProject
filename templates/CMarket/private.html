@@ -9,35 +9,29 @@
 
 	<div class="header">
 		<h1>CMarket</h1>
-		<h2>View all messages that have been sent to you privately!</h2>
+		<h2>View all messages that were sent to you privately!</h2>
 	</div>
 
 	 <div class="topnav">
 		<a href="{% url 'home' %}">Home</a>
 		<a href="{% url 'post' %}">Post</a>
-        <a class="active" href="{% url 'public' %}">Public</a>
-        <a href="{% url 'private' %}">Private</a>
+        <a href="{% url 'public' %}">Public</a>
+        <a class="active" href="{% url 'private' %}">Private</a>
      </div>
 
 	<body>
 		<div class="a">
             <br><br>
-            <h2 id="pagelabel">Send a message!</h2>
-            <form id="postform" method="POST">
-                {% csrf_token %}
-                <label for="target">To (leave blank for public): </label>
-                <input name="target" id="target" type="text"/>
-                <br><br><br>
-                <label for="message">Message below</label>
-                <br>
-                <textarea name="message" id="message" rows="4" cols="50">Send or post a message here!</textarea>
-                <br>
-                <pre id="num">0 characters in message (limit 4000)</pre>
-                <pre id="warning">Character limit all good!</pre>
-                <br>
-                <input id="confirm" type="submit" value="Let's go!" style="vertical-align: middle;"/>
-            </form>
-            <br><br>
+{% if messages %}
+           <table class="content">
+               <tr class="content"><th class="content">Sender</th><th class="content">Message</th></tr>
+    {% for message in messages %}
+               <tr class="content"><td class="content">{{ message.origin }}</td><td class="content">{{ message.content }}</td></tr>
+    {% endfor %}
+       </table>
+{% else %}
+           <h3>No messages have been sent to you.</h3>
+{% endif %}
 		</div>
 	</body>
 </html>

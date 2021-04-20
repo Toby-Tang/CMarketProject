@@ -3,13 +3,13 @@
 <html lang="en-us">
 	<head>
 		<meta http-equiv="Content-Security-Policy" content="script-src 'self';">
-		<title>CMarket - PUBLIC</title>
+		<title>CMarket - POST</title>
 		<link rel="stylesheet" type="text/css" href="{% static 'CMarket/style.css' %}">
 	</head>
 
 	<div class="header">
 		<h1>CMarket</h1>
-		<h2>View all messages that have been posted publicly!</h2>
+		<h2>Post a message publicly or send it privately to a specific user!</h2>
 	</div>
 
 	 <div class="topnav">
@@ -22,22 +22,16 @@
 	<body>
 		<div class="a">
             <br><br>
-            <h2 id="pagelabel">Send a message!</h2>
-            <form id="postform" method="POST">
-                {% csrf_token %}
-                <label for="target">To (leave blank for public): </label>
-                <input name="target" id="target" type="text"/>
-                <br><br><br>
-                <label for="message">Message below</label>
-                <br>
-                <textarea name="message" id="message" rows="4" cols="50">Send or post a message here!</textarea>
-                <br>
-                <pre id="num">0 characters in message (limit 4000)</pre>
-                <pre id="warning">Character limit all good!</pre>
-                <br>
-                <input id="confirm" type="submit" value="Let's go!" style="vertical-align: middle;"/>
-            </form>
-            <br><br>
+{% if posts %}
+           <table class="content">
+               <tr class="content"><th class="content">Sender</th><th class="content">Message</th></tr>
+    {% for post in posts %}
+               <tr class="content"><td class="content">{{ post.origin }}</td><td class="content">{{ post.content }}</td></tr>
+    {% endfor %}
+       </table>
+{% else %}
+           <h3>No posts have been made.</h3>
+{% endif %}
 		</div>
 	</body>
 </html>

@@ -49,7 +49,7 @@ table.admin, th.admin, td.admin, tr.admin {
 th.admin {
   font-weight: bold;
 }
-table.files, th.files, td.files, tr.files {
+table.content, th.content, td.content, tr.content {
   border: 0;
   border-collapse: collapse;
   padding: 5px;
@@ -60,6 +60,13 @@ table.files, th.files, td.files, tr.files {
   text-align: left;
   margin-left: auto;
   margin-right: auto;
+}
+table.content {
+  margin-left: 20%;
+  margin-right: 20%;
+}
+th.content {
+  font-weight: bold;
 }
 label {
   color: var(--text);
