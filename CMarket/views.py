@@ -4,14 +4,17 @@ from .models import Message, Post
 
 
 def home(request):
-    return render(request, "CMarket/home.html")
+    if request.user.is_authenticated:
+        return render(request, "CMarket/home.html", {"acc_disp": f"Log out ({request.user.username})"})
+    else:
+        return render(request, "CMarket/home.html", {"log_disp": "Log in or create account"})
 
 
 def login(request):
     if request.user.is_authenticated:
         return redirect("/")
     elif not request.POST:
-        return render(request, "CMarket/login.html")
+        return render(request, "CMarket/login.html", {"log_disp": "Log in or create account"})
     else:
         mode = request.POST["mode"]
         if mode == "login":
@@ -19,7 +22,8 @@ def login(request):
             password = request.POST["password"]
             temp = auth.authenticate(username=username, password=password)
             if not temp:
-                return render(request, "CMarket/login.html", {"disp": "This username and password does not exist."})
+                return render(request, "CMarket/login.html", {"disp": "This username and password does not exist.",
+                                                              "log_disp": "Log in or create account"})
             else:
                 auth.login(request, temp)
                 return redirect("/")
@@ -27,19 +31,21 @@ def login(request):
             username = request.POST["username"]
             password = request.POST["password"]
             if User.objects.filter(username=username).exists():
-                return render(request, "CMarket/login.html", {"disp": "This username is already in use."})
+                return render(request, "CMarket/login.html", {"disp": "This username is already in use.",
+                                                              "log_disp": "Log in or create account"})
             temp = User.objects.create_user(username=username, password=password)
             auth.login(request, temp)
             return redirect("/")
         else:
-            return render(request, "CMarket/login.html", {"disp": "An unexpected error has occurred..."})
+            return render(request, "CMarket/login.html", {"disp": "An unexpected error has occurred...",
+                                                          "log_disp": "Log in or create account"})
 
 
 def post(request):
     if not request.user.is_authenticated:
         return redirect("/login")
     elif not request.POST:
-        return render(request, "CMarket/post.html")
+        return render(request, "CMarket/post.html", {"acc_disp": f"Log out ({request.user.username})"})
     else:
         origin = request.user
         target = request.POST["target"]
@@ -47,21 +53,29 @@ def post(request):
         if target == "":
             try:
                 Post.objects.create(content=content, origin=origin)
-                return render(request, "CMarket/post.html", {"status": "Post success!"})
+                return render(request, "CMarket/post.html", {"status": "Post success!",
+                                                             "acc_disp": f"Log out ({request.user.username})"})
             except:
-                return render(request, "CMarket/post.html", {"status": "An expected error has occurred."})
+                return render(request, "CMarket/post.html", {"status": "An expected error has occurred.",
+                                                             "acc_disp": f"Log out ({request.user.username})"})
         else:
             try:
                 Message.objects.create(target=target, content=content, origin=origin)
-                return render(request, "CMarket/post.html", {"status": "Message successfully sent!"})
+                return render(request, "CMarket/post.html", {"status": "Message successfully sent!",
+                                                             "acc_disp": f"Log out ({request.user.username})"})
             except:
-                return render(request, "CMarket/post.html", {"status": "An expected error has occurred."})
+                return render(request, "CMarket/post.html", {"status": "An expected error has occurred.",
+                                                             "acc_disp": f"Log out ({request.user.username})"})
 
 
 def public(request):
     posts = Post.objects.all()
-    context = {"posts": posts}
-    return render(request, "CMarket/public.html", context)
+    if request.user.is_authenticated:
+        return render(request, "CMarket/public.html", {"posts": posts,
+                                                       "acc_disp": f"Log out ({request.user.username})"})
+    else:
+        return render(request, "CMarket/public.html", {"posts": posts,
+                                                       "log_disp": "Log in or create account"})
 
 
 def private(request):
@@ -69,5 +83,10 @@ def private(request):
         return redirect("/login")
     temp = Message.objects.all()
     messages = [i for i in temp if i.target == request.user.username]
-    context = {"messages": messages}
-    return render(request, "CMarket/private.html", context)
+    return render(request, "CMarket/private.html", {"messages": messages,
+                                                    "acc_disp": f"Log out ({request.user.username})"})
+
+
+def logout(request):
+    auth.logout(request)
+    return redirect("/")

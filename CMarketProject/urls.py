@@ -11,4 +11,5 @@ urlpatterns = [
     url(r'^post/', views.post, name='post'),
     url(r'^public/', views.public, name='public'),
     url(r'^private/', views.private, name='private'),
+    url(r'^logout/', views.logout, name='logout'),
 ]

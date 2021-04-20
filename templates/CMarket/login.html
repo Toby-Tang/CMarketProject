@@ -9,6 +9,13 @@
 	</head>
 
 	<div class="header">
+        <div class="user">
+            {% if acc_disp %}
+                <a style="color:white;" href="{% url 'logout' %}">{{ acc_disp }}</a>
+            {% elif log_disp %}
+                <a style="color:white;" href="{% url 'login' %}">{{ log_disp }}</a>
+            {% endif %}
+		</div>
 		<h1>CrowdedMarket</h1>
 	  	<h2>Login to or create an account for CMarket.</h2>
 	</div>

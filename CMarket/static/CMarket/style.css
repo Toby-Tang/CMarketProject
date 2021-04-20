@@ -34,21 +34,6 @@ a:link, a:visited {
   background-color: transparent;
   text-decoration: underline;
 }
-table.admin, th.admin, td.admin, tr.admin {
-  border: 1px solid white;
-  border-collapse: collapse;
-  padding: 5px;
-  color: var(--text);
-  font-family: "Garamond", serif;
-  font-size: 14px;
-  font-weight: normal;
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-}
-th.admin {
-  font-weight: bold;
-}
 table.content, th.content, td.content, tr.content {
   border: 0;
   border-collapse: collapse;
@@ -83,18 +68,10 @@ div.b {
   padding: 20px;
   text-align: right;
 }
-div.loginsignup {
-  text-align: left;
-  font-size: 16px;
+div.user {
+  text-align: right;
+  font-size: 14px;
 }
-/*
-div.login {
-  display: "block";
-}
-div.signup {
-  display: "none";
-}
-*/
 div.content{
   text-align: center;
   color: var(--text);
@@ -120,7 +97,7 @@ h1 {
   font-family: "Garamond", serif;
   font-size: 36px;
   font-weight: bold;
-  padding-top: 20px;
+  padding-top: 10px;
 }
 h2 {
   color: var(--headerText);
@@ -153,23 +130,4 @@ h2 {
 .topnav a.active {
   background-color: var(--headerMain);
   color: white;
-}
-
-#login_panel{
-  display: block;
-  padding-right: 25%;
-  padding-left: 25%;
-}
-#newacc_panel{
-  display: none;
-  padding-right: 25%;
-  padding-left: 25%;
-}
-.flip {
-    font-family: Helvetica, sans-serif;
-    font-size: 12px;
-    border: none;
-    text-align: center;
-    color: var(--text);
-    margin: auto;
 }

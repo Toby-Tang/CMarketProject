@@ -9,6 +9,13 @@
 	</head>
 
 	<div class="header">
+        <div class="user">
+            {% if acc_disp %}
+                <a style="color:white;" href="{% url 'logout' %}">{{ acc_disp }}</a>
+            {% elif log_disp %}
+                <a style="color:white;" href="{% url 'login' %}">{{ log_disp }}</a>
+            {% endif %}
+		</div>
 		<h1>CMarket</h1>
 		<h2>Post a message publicly or send it privately to a specific user!</h2>
 	</div>
