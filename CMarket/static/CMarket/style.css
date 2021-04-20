@@ -27,8 +27,7 @@ p {
 }
 pre {
   color: var(--text);
-  text-align: left;
-  padding-left: 40%;
+  font-size: 14px;
 }
 a:link, a:visited {
   color: var(--link);

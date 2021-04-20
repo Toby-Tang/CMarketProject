@@ -22,9 +22,3 @@ function toggle_me(){
 		}
 	}
 }
-
-
-const form = document.getElementById("logregform");
-document.getElementById("logreg").addEventListener("click", function () {
-  form.submit();
-});
