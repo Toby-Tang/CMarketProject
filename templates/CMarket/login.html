@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en-us">
+	<head>
+		<meta http-equiv="Content-Security-Policy" content="script-src 'self';">
+		<title>CrowdedMarket - LOGIN</title>
+		<link rel="stylesheet" type="text/css" href="{% static 'CMarket/style.css' %}">
+		<script src="{% static 'CMarket/logreg.js' %}" defer></script>
+	</head>
+
+	<div class="header">
+		<h1>CrowdedMarket</h1>
+	  	<h2>Login to or create an account for CMarket.</h2>
+	</div>
+
+	 <div class="topnav">
+		<a href="">Home</a>
+		<a href="post.html">Post</a>
+        <a href="public.html">Public</a>
+        <a href="private.html">Private</a>
+     </div>
+
+	<body>
+		<div class="a">
+            <br><br>
+            <h2 id="pagelabel">Sign In</h2>
+            <form id="logregform" method="POST">
+                {% csrf_token %}
+                <input name="mode" id="mode" type="hidden" value="login"/>
+                <label for="username">Username</label>
+                <input name="username" id="username" type="text"/><br><br>
+                <label for="password">Password</label>
+                <input name="password" id="password" type="password"/><br><br>
+                <input id="logreg" type="submit" value="Confirm" style="vertical-align: middle;"/>
+            </form>
+            <br><br>
+            <p id="flipper">or create an account!</p>
+            <br><br>
+            <h3>{{ disp }}</h3>
+		</div>
+	</body>
+</html>

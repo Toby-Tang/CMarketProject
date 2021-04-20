@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en-us">
+	<head>
+		<meta http-equiv="Content-Security-Policy" content="script-src 'self';">
+		<title>CMarket - HOME</title>
+		<link rel="stylesheet" type="text/css" href="{% static 'CMarket/style.css' %}">
+	</head>
+
+	<div class="header">
+		<h1>CMarket</h1>
+		<h2>CMarket is the new and improved CrowdedMarket! Come here to leave messages to other users or the general public.</h2>
+	</div>
+
+	 <div class="topnav">
+		<a class="active" href="">Home</a>
+		<a href="post.html">Post</a>
+        <a href="public.html">Public</a>
+        <a href="private.html">Private</a>
+	</div>
+
+	<body>
+		<div class="a">
+            <br><br>
+			<img src="{% static 'CMarket/image.jpeg' %}" alt="generic">
+		</div>
+	</body>
+</html>
