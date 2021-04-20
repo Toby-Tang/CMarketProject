@@ -1,3 +1,169 @@
-li a {
-color: green;
+:root {
+  --background: #2C2B30;
+  --text: #FFFFFF;
+  --link: #55AAFF;
+  --headerMain: #F58F7C;
+  --headerText: #FFFFFF;
+  --headerLinks: #D6D6D6;
+  --headerHover: #F2C4CE;
+  --headerBar: #4F4F51;
+}
+
+body {
+  background-color: var(--background);
+}
+h3 {
+  color: var(--text);
+  font-family: "Garamond", serif;
+  font-size: 16px;
+  font-weight: lighter;
+  font-style: italic;
+}
+p {
+  color: var(--text);
+  font-family: "Garamond", serif;
+  font-size: 18px;
+  font-weight: normal;
+}
+pre {
+  color: var(--text);
+  text-align: left;
+  padding-left: 40%;
+}
+a:link, a:visited {
+  color: var(--link);
+  background-color: transparent;
+  text-decoration: underline;
+}
+table.admin, th.admin, td.admin, tr.admin {
+  border: 1px solid white;
+  border-collapse: collapse;
+  padding: 5px;
+  color: var(--text);
+  font-family: "Garamond", serif;
+  font-size: 14px;
+  font-weight: normal;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+th.admin {
+  font-weight: bold;
+}
+table.files, th.files, td.files, tr.files {
+  border: 0;
+  border-collapse: collapse;
+  padding: 5px;
+  color: var(--text);
+  font-family: "Garamond", serif;
+  font-size: 16px;
+  font-weight: normal;
+  text-align: left;
+  margin-left: auto;
+  margin-right: auto;
+}
+label {
+  color: var(--text);
+  font-family: "Garamond", serif;
+  font-size: 16px;
+  font-weight: lighter;
+}
+
+div.a {
+  padding: 10px;
+  text-align: center;
+}
+div.b {
+  padding: 20px;
+  text-align: right;
+}
+div.loginsignup {
+  text-align: left;
+  font-size: 16px;
+}
+/*
+div.login {
+  display: "block";
+}
+div.signup {
+  display: "none";
+}
+*/
+div.content{
+  text-align: center;
+  color: var(--text);
+  font-family: "Helvetica", sans-serif;
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.header {
+  margin: 0px;
+  padding: 10px;
+  text-align: center;
+  background: var(--headerMain);
+  color: var(--headerText);
+  font-size: 30px;
+}
+h1 {
+  margin: 0;
+  color: var(--headerText);
+  font-family: "Garamond", serif;
+  font-size: 36px;
+  font-weight: bold;
+  padding-top: 20px;
+}
+h2 {
+  color: var(--headerText);
+  font-family: "Garamond", serif;
+  font-size: 20px;
+  font-weight: normal;
+  padding-left: 20%;
+  padding-right: 20%;
+}
+.topnav {
+  background-color: var(--headerBar);
+  overflow: hidden;
+}
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  color: var(--headerLinks);
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-family: "Helvetica", sans-serif;
+  font-size: 17px;
+}
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: var(--headerHover);
+  color: black;
+}
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: var(--headerMain);
+  color: white;
+}
+
+#login_panel{
+  display: block;
+  padding-right: 25%;
+  padding-left: 25%;
+}
+#newacc_panel{
+  display: none;
+  padding-right: 25%;
+  padding-left: 25%;
+}
+.flip {
+    font-family: Helvetica, sans-serif;
+    font-size: 12px;
+    border: none;
+    text-align: center;
+    color: var(--text);
+    margin: auto;
 }
