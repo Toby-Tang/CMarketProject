@@ -28,6 +28,11 @@
 
 	<body>
 		<div class="a">
+            <br>
+            <form action="{% url 'delete_posts' %}" method="GET">
+                {% csrf_token %}
+                <input class="btn btn-default btn-danger" type="submit" value="Delete All"/>
+            </form>
             <br><br>
 {% if posts %}
            <table class="content">

@@ -17,6 +17,8 @@ urlpatterns = [
     url(r'^public/', views.public, name='public'),
     url(r'^private/', views.private, name='private'),
     url(r'^logout/', views.logout, name='logout'),
+    url(r'^delete_posts/', views.delete_posts, name='delete_posts'),
+    url(r'^delete_messages/', views.delete_messages, name='delete_messages'),
     re_path(r'^favicon\.ico$', favicon_view),
 ]
 
