@@ -99,14 +99,16 @@ def logout(request):
 
 
 def delete_posts(request):
-    if request.user.is_authenticated and request.user.username == "admin":
-        Post.objects.all().delete()
+    if "/public" in request.META.get("HTTP_REFERER", ""):
+        if request.user.is_authenticated and request.user.username == "admin":
+            Post.objects.all().delete()
     return redirect("/")
 
 
 def delete_messages(request):
-    if request.user.is_authenticated:
-        for message in Message.objects.all():
-            if message.target == request.user.username:
-                message.delete()
+    if "/private" in request.META.get("HTTP_REFERER", ""):
+        if request.user.is_authenticated:
+            for message in Message.objects.all():
+                if message.target == request.user.username:
+                    message.delete()
     return redirect("/")
